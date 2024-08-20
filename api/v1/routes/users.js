@@ -9,13 +9,13 @@ router.get("/", userController.getAllUsers)
 // Creating one user
 router.post("/", userController.createUser)
 
-// Getting one user
-router.get("/:id", userMiddleware.getUser, userController.getUserById)
+// Getting one user by name or ID
+router.get("/:id?", userMiddleware.getUser, userController.getUserById)
 
-// Updating one user
-router.patch("/:id", userMiddleware.getUser, userController.updateUser)
+// Updating one user  or ID
+router.patch("/:id?", userMiddleware.getUser, userController.updateUser)
 
-// Deleting one user
-router.delete("/:id", userMiddleware.getUser, userController.deleteUser)
+// Deleting one user  or ID
+router.delete("/:id?", userMiddleware.getUser, userController.deleteUser)
 
 module.exports = router
