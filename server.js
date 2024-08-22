@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000
 app.use(express.json()) // Middleware to accept JSON in requests
 
 const userRouter = require('./api/v1/routes/users')
-app.use('/users', userRouter)
+app.use('/', userRouter)
 
 
 app.listen(port, () => {
