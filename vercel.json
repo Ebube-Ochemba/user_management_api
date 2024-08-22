@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/server.js"
+      }
+    ],
+    "env": {
+      "DATABASE_URL": "mongodb+srv://bane:<db_password>@myfreecluster.drhea.mongodb.net/?retryWrites=true&w=majority&appName=myFreeCluster"
+    }
+  }
+  
