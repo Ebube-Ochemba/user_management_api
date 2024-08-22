@@ -11,9 +11,6 @@
         "src": "/(.*)",
         "dest": "/server.js"
       }
-    ],
-    "env": {
-      "DATABASE_URL": "mongodb+srv://bane:<db_password>@myfreecluster.drhea.mongodb.net/?retryWrites=true&w=majority&appName=myFreeCluster"
-    }
+    ]
   }
   
