@@ -82,4 +82,23 @@ describe('User Middleware Test', () => {
         expect(res.statusCode).toBe(404);
         expect(JSON.parse(res._getData())).toMatchObject({ message: 'Cannot find user' });
     });
+
+    it('should return 500 when there is a server error', async () => {
+        // Mock User.findById to throw an error
+        const errorMessage = 'Server error';
+        jest.spyOn(User, 'findById').mockImplementation(() => {
+            throw new Error(errorMessage);
+        });
+    
+        req.params.id = new mongoose.Types.ObjectId(); // Providing an ID
+    
+        await getUser(req, res, next);
+    
+        expect(res.statusCode).toBe(500);
+        expect(JSON.parse(res._getData())).toMatchObject({ message: errorMessage });
+    
+        // Restore the original implementation
+        User.findById.mockRestore();
+    });
 });
+
