@@ -1,9 +1,12 @@
+// Environmentals
 require('dotenv').config()
 
+// Imports
 const express = require('express')
 const db = require('./config/db')
 const userRouter = require('./api/v1/routes/users')
 
+// App setup
 const app = express()
 const port = process.env.PORT || 3001
 
@@ -14,7 +17,7 @@ app.use(express.json())
 app.use('/', userRouter)
 
 
-// Start derver
+// Start Server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`)
 })

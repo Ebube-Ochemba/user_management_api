@@ -6,9 +6,6 @@ exports.getUser = async (req, res, next) => {
         if (req.params.id) {
             // Find user by ID
             user = await User.findById(req.params.id)
-        } else if (req.query.name) {
-            // Find user by name
-            user = await User.findOne({ name: req.query.name })
         }
 
         if (user == null) {
