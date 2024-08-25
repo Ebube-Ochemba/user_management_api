@@ -20,7 +20,7 @@ app.use(express.json())
 app.use('/', userRouter)
 
 
-if (process.env.NODE_ENV == 'prod') {
+if (process.env.NODE_ENV !== 'prod') {
     // Start Server
     app.listen(port, () => {
         console.log(`Server running at http://localhost:${port}`)
