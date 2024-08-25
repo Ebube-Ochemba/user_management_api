@@ -5,11 +5,14 @@ const mongoose = require('mongoose');
 const uri = process.env.DATABASE_URL;
 
 // Mongoose connection setup
-mongoose.connect(uri)
-  .then(() => console.log('Connected to MongoDB with Mongoose'))
-  .catch((error) => console.error('Error connecting to MongoDB with Mongoose:', error));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(uri);
+    console.log('Connected to MongoDB with Mongoose');
+  } catch (error) {
+    console.error('Error connecting to MongoDB with Mongoose:', error);
+    process.exit(1); // Exit process with failure
+  }
+};
 
-const db = mongoose.connection
-
-// Export the connection for use in other modules
-module.exports = db;
+module.exports = connectDB;
